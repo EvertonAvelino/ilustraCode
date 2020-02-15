@@ -16,7 +16,16 @@
     $larg = str_replace(".", ".",str_replace(".","", $larg));
     $alt = str_replace(".", ".",str_replace(".","", $alt));
     $val = str_replace(".", ".",str_replace(".",".", $val));
-
+/*
+echo $cep_o , "<br>";
+echo $cep_d, "<br>";
+echo $serv, "<br>";
+echo $peso, "<br>";
+echo $comp, "<br>";
+echo $larg, "<br>";
+echo $alt, "<br>";
+echo $val, "<br>";
+*/
     //função calculaR
     function calcular($cep_o, $cep_d , $serv, $peso, $comp, $larg, $alt, $val){
 
@@ -29,13 +38,13 @@
 
    // echo $cep_o,"<br>", $cep_d,"<br>" , $serv,"<br>", $peso,"<br>", $comp,"<br>", $larg,"<br>", $alt,"<br>", $val;
 
-   $api_correios = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?&"
+   $api_correios = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?&sCepOrigem="
    .$cep_o."&CepDestino=".$cep_d."&nCdServico=".$serv."&nVlpeso="
    .$peso."&nVlComprimento=".$comp."&nVlLargura=".$larg."&nVlAltura=".$alt."&nVlValorDeclarado="
    .$val."&nCdMaoPropria=n&nVlDiametro=O&nCdEmpresa=&sDSenha=&sCdAvisoRecebimento=n&StrRetorno=xml";
   
-  
-  
+ 
+  /*
    // nova forma de fazer
 
  $url = "http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?";
@@ -54,8 +63,8 @@
     $url .= "&nCdServico=" . $serv;
     $url .= "&nVlDiametro=0";
     $url .= "&StrRetorno=xml";
-
-  $arq_xml = simplexml_load_file($url);
+*/
+  $arq_xml = simplexml_load_file($api_correios);
    echo "<pre>";
         print_r($arq_xml);
    echo "</pre>"; 
